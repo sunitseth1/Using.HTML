@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Smythe&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Smythe", cursive;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 1.4px;
+  max-width: 600px;
+  box-shadow: 0px 0px 3px #444;
+  border-radius: 16px;
+  margin: 20px auto;
+}
+.navbar {
+  width: 100%;
+  height: 167px;
+  border-radius: 13px 13px 0 0;
+
+  display: flex;
+  background: url("https://images.unsplash.com/photo-1616645500344-209060c84970?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60")
+    no-repeat center center;
+  background-size: cover;
+}
+.navbar-text {
+  margin: auto 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+.navbar-tagline {
+  font-size: 19px;
+  margin-top: 20px;
+  line-height: 14px;
+}
+.c-padding {
+  padding: 0px 46px;
+}
+main {
+  padding: 46px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  gap: 46px;
+}
+.food-item {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+  height: 140px;
+  border-bottom: 1px solid #d2d2d2;
+}
+.food-img {
+  font-size: 80px;
+  display: block;
+}
+.food-desc-head {
+  font-size: 28px;
+  color: black;
+  font-weight: 200;
+}
+.food-desc-materials {
+  color: #8b8b8b;
+  margin: 8px 0px;
+}
+.food-desc-price {
+  color: black;
+  font-size: 22px;
+}
+.add-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid #d2d2d2;
+  margin-left: auto;
+}
+
+/* Checkout Container */
+.checkout-container {
+  margin-top: 30px;
+  color: black;
+  font-size: 22px;
+}
+.cart-desc {
+  font-weight: normal;
+  text-align: center;
+}
+.cart-details {
+  margin: 64px 0 20px 0;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 32px;
+  gap: 20px;
+  border-bottom: 1px solid #d2d2d2;
+}
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.remove-item {
+  font-size: 16px;
+  color: #bbbbbb;
+  line-height: 28px;
+}
+.cart-item-price {
+  display: inline-block;
+  margin-left: auto;
+}
+.total-price {
+  display: flex;
+}
+.total-items-price {
+  display: inline-block;
+  margin-left: auto;
+}
+.btn-order {
+  font-family: Verdana;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  margin-top: 50px;
+  padding: 18px;
+  background-color: #16db99;
+  border: none;
+}
+.order-qty {
+  display: inline-block;
+  margin-left: 10px;
+}
+/* Model */
+.model {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  width: 450px;
+  background: #fff;
+  height: 500px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  padding: 20px 23px 0px 23px;
+  border-radius: 4px;
+  box-shadow: 0 0 50px 10px #757575;
+}
+.model-header {
+  text-align: center;
+  margin-bottom: 46px;
+  font-size: 24px;
+}
+input {
+  width: 100%;
+  height: 60px;
+  padding: 16px 23px;
+  margin-bottom: 23px;
+  font-size: 20px;
+  color: #757575;
+  border: 1px solid #757575;
+  outline: none;
+  border-radius: 4px;
+}
+input:active,
+input:hover {
+  outline: none;
+}
+.pay-btn {
+  margin-top: 36px;
+  font-weight: bold;
+  color: white;
+  background: #16db99;
+  border: none;
+  outline: none;
+}
+/* Welcome Message */
+.thank-you-conatiner {
+  width: 100%;
+  height: 120px;
+  background: #ecfdf5;
+  border-radius: 3px;
+  color: #16db99;
+  text-align: center;
+  line-height: 120px;
+  font-weight: bold;
+}
+/* Utility */
+.hidden {
+  display: none;
+}
+
+@media (max-width: 530px) {
+  main {
+    padding: 20px;
+  }
+  .food-item {
+    gap: 10px;
+  }
+  .food-img {
+    font-size: 60px;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-text c-padding">
+          <h1 class="navbar-info">Fooddddie</h1>
+          <p class="navbar-tagline"> The best burgers and pizzas in town. </p>
+        </div>
+      </nav>
+      <main>
+        <div class="container">
+          <!-- Code Through JavaScript -->
+        </div>
+      
+        <!--Checkout System Here  -->
+      
+        <div class="checkout-container hidden">
+          <h2 class="cart-desc">Your Orders</h2>
+          <div class="cart-details">
+            <!-- <div class="cart-item" > 
+                              <span class="cart-item-name">Pizza</span> 
+                              <span class="remove-item">remove</span>
+                              <span class="cart-item-price">$14</span>
+                          </div> -->
+      
+          </div>
+          <div class="total-price">Total Price<span class="total-items-price">₹140</span></div>
+          <button class="btn-order" id="complete-order">Compelte Order</button>
+        </div>
+      </main>
+      <div class="model">
+        <h1 class="model-header">Enter Card Details</h1>
+        <form action="" method="POST" id="myForm">
+          <input type="text" name="name" placeholder="Enetr Your Name" required />
+          <input type="text" name="cardNo" placeholder="Enetr Card No" maxlength="16" pattern="^[0-9]*$" title="Please Make Sure that Card Number is valid" required />
+          <input type="text" name="name" placeholder="Enetr CVV" maxlength="3" pattern="^[0-9]*₹" title="Please Make Sure that CVV is valid" required />
+          <input type="submit" class="pay-btn" value="Pay" />
+        </form>
+      </div>
+      <script src="index.js" type="module"></script>
+</body>
+<script>
+    const menuArray = [
+  {
+    name: "Pizza",
+    ingredients: ["pepperoni", "mushrom", "mozarella"],
+    id: 0,
+    price: 14,
+    emoji: "🍕"
+  },
+  {
+    name: "Hamburger",
+    ingredients: ["beef", "cheese", "lettuce"],
+    price: 12,
+    emoji: "🍔",
+    id: 1
+  },
+  {
+    name: "Beer",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 12,
+    emoji: "🍺",
+    id: 2
+  },
+  {
+    name: "Hot Dog",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 10,
+    emoji: "🌭",
+    id: 3
+  }
+  ,
+  {
+    name: "Green Salad",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 14,
+    emoji: "🥗",
+    id: 4
+  }
+  ,
+  {
+    name: "Fried Shirmp",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 8,
+    emoji: "🍤",
+    id: 5
+  }
+  ,
+  {
+    name: "Burito",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 8,
+    emoji: "🌯",
+    id: 6
+  }
+  ,
+  {
+    name: "Taco",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 9,
+    emoji: "🌮",
+    id: 7
+  }
+  ,
+  {
+    name: "SandWich",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 8,
+    emoji: "🥪",
+    id: 8
+  }
+  ,
+  {
+    name: "Small Pizza",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 7,
+    emoji: "🍕",
+    id: 9
+  }
+  ,
+  {
+    name: "Frinch Fri",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 10,
+    emoji: "🍟",
+    id: 10
+  }
+  ,
+  {
+    name: "Fish Fry",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 12,
+    emoji: "🍣",
+    id: 11
+  }
+  ,
+  {
+    name: "Candy",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 5,
+    emoji: "🥫",
+    id: 12
+  }
+  ,
+  {
+    name: "Noodle Cup",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 13,
+    emoji: "🍲",
+    id: 13
+  }
+  ,
+  {
+    name: "Italian Food",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 16,
+    emoji: "🍝",
+    id: 14
+  }
+  ,
+  {
+    name: "Noodle",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 17,
+    emoji: "🍜",
+    id: 15
+  }
+  ,
+  {
+    name: "Ice Creem",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 10,
+    emoji: "🍨",
+    id: 16
+  }
+  ,
+  {
+    name: "Beer",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 20,
+    emoji: "🎂",
+    id: 17
+  }
+  ,
+  {
+    name: "Small Cake",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 10,
+    emoji: "🍰",
+    id: 18
+  }
+  ,
+  {
+    name: "Beer Bootle",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 20,
+    emoji: "🍾",
+    id: 19
+  }
+  ,
+  {
+    name: "Poop Corn",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 12,
+    emoji: "🍿",
+    id: 20
+  }
+  ,
+  {
+    name: "Dornal",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 12,
+    emoji: "🥯",
+    id: 21
+  }
+  ,
+  {
+    name: "Beer",
+    ingredients: ["grain, hops, yeast, water"],
+    price: 10,
+    emoji: "🧇",
+    id: 22
+  }
+];
+
+const containerEl = document.querySelector(".container");
+let cartItem = [];
+// Getting all the data form Data.js and converting it into html code.
+function getFoodItems(data) {
+  let foodHtml = ``;
+  data.forEach((item) => {
+    foodHtml += `
+            <div class="food-item" >
+                    <div class="food-img">${item.emoji}</div>
+                    <div class="food-desc">
+                        <h2 class="food-desc-head">${item.name}</h2>
+                        <p class="food-desc-materials">${item.ingredients}</p>
+                        <p class="food-desc-price">$${item.price}</p>
+                    </div>
+                    <button class="add-btn" data-add=${item.id} >  + </button>
+                </div>
+       `;
+  });
+  return foodHtml;
+}
+
+function render() {
+  containerEl.innerHTML += getFoodItems(menuArray);
+}
+render();
+
+// Handleing Cart
+
+document.addEventListener("click", (e) => {
+  if (e.target.dataset.add) {
+    updateCart(parseInt(e.target.dataset.add));
+  }
+  // Complete Btn
+  else if (e.target.id == "complete-order") {
+    document.querySelector(".model").style.display = "block";
+  }
+  // Remove Btn
+  else if (e.target.classList.contains("pay-btn")) {
+    e.preventDefault();
+    document.querySelector(".model").style.display = "none";
+    const myFormData = new FormData(myForm);
+    const formName = myFormData.get("name");
+    showHideContainer(1);
+    document.querySelector(".checkout-container").innerHTML = `
+            <div class="thank-you-conatiner">
+                Thanks, ${formName}! Your order is on its way!
+            </div>
+        `;
+  } else if (e.target.id) {
+    cartItem = cartItem.filter((item) => item.id != e.target.id);
+    console.log(cartItem.length);
+    if (cartItem.length == 0) {
+      showHideContainer(0);
+    }
+    renderCart();
+  }
+});
+
+function updateCart(elementId) {
+  const getItem = menuArray.filter((item) => item.id == elementId)[0];
+  cartItem.push(getItem);
+  genrateCartHtml();
+  renderCart();
+}
+
+function genrateCartHtml() {
+  let cartHtml = ``;
+  let totalPrice = 0;
+  cartItem.forEach((item) => {
+    cartHtml += ` 
+                    <div class="cart-item" > 
+                        <span class="cart-item-name">${item.name}</span> 
+                        <span class="remove-item" id = ${item.id}>remove</span>
+                        <span class="cart-item-price" >$${item.price}</span>
+                    </div>`;
+    totalPrice += item.price;
+  });
+  document.querySelector(".total-items-price").textContent = `$${totalPrice}`;
+  return cartHtml;
+}
+
+function showHideContainer(k) {
+  const cehckoutContainerEl = document.querySelector(".checkout-container");
+  if (k == 1 && cehckoutContainerEl.classList.contains("hidden")) {
+    cehckoutContainerEl.classList.remove("hidden");
+  } else if (k == 0) {
+    cehckoutContainerEl.classList.add("hidden");
+  }
+}
+function renderCart() {
+  if (cartItem.length > 0) {
+    showHideContainer(1);
+    document.querySelector(".cart-details").innerHTML = genrateCartHtml();
+  }
+}
+
+</script>
+</html>
